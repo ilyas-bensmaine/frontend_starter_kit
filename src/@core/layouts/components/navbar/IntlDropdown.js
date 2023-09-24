@@ -4,23 +4,41 @@ import ReactCountryFlag from 'react-country-flag'
 
 // ** Reactstrap Imports
 import { UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import useAxiosAPI from '../../../../api/useAxiosAPI'
+import { handleAuthUserLanguage } from '../../../../views/authentication/store'
+import { useDispatch } from 'react-redux'
+import { useRTL } from '../../../../utility/hooks/useRTL'
 
 const IntlDropdown = () => {
   // ** Hooks
   const { i18n } = useTranslation()
+  const axiosAPI = useAxiosAPI()
+  const dispatch = useDispatch()
+  const [isRtl, setIsRtl] = useRTL()
 
   // ** Vars
   const langObj = {
-    en: 'English',
-    de: 'German',
-    fr: 'French',
-    pt: 'Portuguese'
+    fr: 'Français',
+    ar: 'عربية'
   }
 
   // ** Function to switch Language
-  const handleLangUpdate = (e, lang) => {
+  const handleLangUpdate = async (e, lang) => {
     e.preventDefault()
+    if (lang === 'ar' && !isRtl) {
+      setIsRtl(true)
+    } 
+    if (lang !== 'ar' && isRtl) {
+      setIsRtl(false)
+    }
+    // Load Language in frontend
     i18n.changeLanguage(lang)
+    // try {
+    //   await axiosAPI.post('/users/change_language', {lang})
+    // } catch (error) {
+    //   console.error(error)
+    // }
+    dispatch(handleAuthUserLanguage({language: lang}))
   }
 
   return (
@@ -29,26 +47,18 @@ const IntlDropdown = () => {
         <ReactCountryFlag
           svg
           className='country-flag flag-icon'
-          countryCode={i18n.language === 'en' ? 'us' : i18n.language}
+          countryCode={i18n.language === 'ar' ? 'dz' : i18n.language}
         />
         <span className='selected-language'>{langObj[i18n.language]}</span>
       </DropdownToggle>
       <DropdownMenu className='mt-0' end>
-        <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'en')}>
-          <ReactCountryFlag className='country-flag' countryCode='us' svg />
-          <span className='ms-1'>English</span>
-        </DropdownItem>
         <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'fr')}>
           <ReactCountryFlag className='country-flag' countryCode='fr' svg />
-          <span className='ms-1'>French</span>
+          <span className='ms-1'>Français</span>
         </DropdownItem>
-        <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'de')}>
-          <ReactCountryFlag className='country-flag' countryCode='de' svg />
-          <span className='ms-1'>German</span>
-        </DropdownItem>
-        <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'pt')}>
-          <ReactCountryFlag className='country-flag' countryCode='pt' svg />
-          <span className='ms-1'>Portuguese</span>
+        <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'ar')}>
+          <ReactCountryFlag className='country-flag' countryCode='dz' svg />
+          <span className='ms-1'>العربية</span>
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>

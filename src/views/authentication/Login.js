@@ -135,7 +135,7 @@ const LoginBasic = () => {
             <CardTitle tag='h4' className='mb-1'>
               Welcome to Vuexy! 👋
             </CardTitle>
-            <CardText className='mb-2'>Please sign-in to your account and start the adventure</CardText>
+            <CardText className='mb-2'>{t("Connectez-vous à votre compte et commencez à explorer notre plateforme.")}</CardText>
             <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
             <div className='mb-1'>
                 <Label className='form-label' for='email'>
@@ -163,7 +163,7 @@ const LoginBasic = () => {
                     {t("Mot de passe")}
                   </Label>
                   <Link to='/pages/forgot-password-basic'>
-                    <small>Mot de passe oublié ?</small>
+                    <small>{t("Mot de passe oublié ?")}</small>
                   </Link>
                 </div>
                 <Controller
@@ -179,21 +179,21 @@ const LoginBasic = () => {
               <div className='form-check mb-1'>
                 <Input type='checkbox' id='remember-me' />
                 <Label className='form-check-label' for='remember-me'>
-                  Remember Me
+                  {t("Me garder connecté")}
                 </Label>
               </div>
               <Button type='submit' color="primary" block>
-                Sign in
+                {t("Se connecter")}
               </Button>
             </Form>
             <p className='text-center mt-2'>
-              <span className='me-25'>New on our platform?</span>
+              <span className='me-25'>{t("Nouveau sur notre plateforme ?")}</span>
               <Link to='/register'>
-                <span>Create an account</span>
+                <span>{t("Créer un compte")}</span>
               </Link>
             </p>
             <div className='divider my-2'>
-              <div className='divider-text'>or</div>
+              <div className='divider-text'>{t("ou")}</div>
             </div>
             <div className='auth-footer-btn d-flex justify-content-center'>
               <Button color='facebook'>

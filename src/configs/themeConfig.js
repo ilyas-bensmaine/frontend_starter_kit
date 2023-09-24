@@ -6,14 +6,14 @@ import logo from "@src/assets/images/logo/logo.svg";
 //Template config options
 const themeConfig = {
   app: {
-    appName: "Vuexy",
+    appName: "Safyauto",
     appLogoImage: logo,
   },
   layout: {
     isRTL: false,
-    skin: "light", // light, dark, bordered, semi-dark
+    skin: "semi-dark", // light, dark, bordered, semi-dark
     type: "vertical", // vertical, horizontal
-    contentWidth: "boxed", // full, boxed
+    contentWidth: "full", // full, boxed
     menu: {
       isHidden: false,
       isCollapsed: false,
@@ -26,7 +26,7 @@ const themeConfig = {
     footer: {
       type: "static", // static, sticky, hidden
     },
-    customizer: false,
+    customizer: true,
     scrollTop: true, // Enable scroll to top button
     toastPosition: "top-right", // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
   },

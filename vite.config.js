@@ -12,13 +12,7 @@ export default () => {
       global: 'globalThis'
     },
     server: {
-      port: 3000,
-      proxy: 'https://pixinvent.com/',
-      cors: {
-        origin: ['https://pixinvent.com/', 'http://localhost:3000'],
-        methods: ['GET', 'PATCH', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-      }
+      port: 8001,
     },
     css: {
       preprocessorOptions: {
@@ -54,7 +48,9 @@ export default () => {
         { find: 'assert', replacement: 'rollup-plugin-node-polyfills/polyfills/assert' },
         { find: 'buffer', replacement: 'rollup-plugin-node-polyfills/polyfills/buffer-es6' },
         { find: 'process', replacement: 'rollup-plugin-node-polyfills/polyfills/process-es6' },
-        { find: '@components', replacement: path.resolve(__dirname, 'src/@core/components') }
+        { find: '@components', replacement: path.resolve(__dirname, 'src/@core/components') },
+        { find: '@api', replacement: path.resolve(__dirname, 'src/api') },
+        { find: '@utility', replacement: path.resolve(__dirname, 'src/utility') }
       ]
     },
     esbuild: {

@@ -7,10 +7,15 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
+// ** i18n
+import './configs/i18n'
+
+// ** CASL Context
+import ability from './configs/acl/ability'
+import { AbilityContext } from './utility/context/Can'
+
 // ** ThemeColors Context
-
 import { ThemeContext } from "./utility/context/ThemeColors";
-
 // ** ThemeConfig
 import themeConfig from "./configs/themeConfig";
 
@@ -52,13 +57,15 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <Suspense fallback={<Spinner />}>
-        <ThemeContext>
-          <LazyApp />
-          <Toaster
-            position={themeConfig.layout.toastPosition}
-            toastOptions={{ className: "react-hot-toast" }}
-          />
-        </ThemeContext>
+        <AbilityContext.Provider value={ability}>
+          <ThemeContext>
+            <LazyApp />
+            <Toaster
+              position={themeConfig.layout.toastPosition}
+              toastOptions={{ className: "react-hot-toast" }}
+            />
+          </ThemeContext>
+        </AbilityContext.Provider>
       </Suspense>
     </Provider>
   </BrowserRouter>

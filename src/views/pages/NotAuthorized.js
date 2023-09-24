@@ -105,7 +105,7 @@ const NotAuthorized = () => {
             tag={Link}
             color="primary"
             className="btn-sm-block mb-1"
-            to={"/"}
+            to={"/home"}
           >
             Back to Home
           </Button>

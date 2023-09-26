@@ -14,8 +14,8 @@ const languages = {
 }
 
 export const getUserLanguage = () => {
-  JSON.parse(localStorage.getItem("userData")).language
-  console.log('LAnguage', JSON.parse(localStorage.getItem("userData")).language)
+  const userData = localStorage.getItem("userData")
+  return userData ? JSON.parse(localStorage.getItem("userData")).language : 'fr'
 } 
 
 i18n

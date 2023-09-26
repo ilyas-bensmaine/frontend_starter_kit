@@ -22,6 +22,7 @@ import { handleLogin } from './store'
 import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
 import { AbilityContext } from '../../utility/context/Can'
+import { useRTL } from '../../utility/hooks/useRTL'
 
 const defaultValues = {
   email: '',
@@ -31,8 +32,9 @@ const defaultValues = {
 const LoginBasic = () => {
   // ** Hooks
   const axiosAPI = useAxiosAPI()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+  const [isRtl, setIsRtl] = useRTL()
   // ** Store
   const dispatch = useDispatch()
   // ** Context
@@ -45,12 +47,22 @@ const LoginBasic = () => {
     formState: { errors }
   } = useForm({ defaultValues })
   // ** Submit func
+  const initialLanguageDirection = (language) => {
+    if (language === 'ar' && !isRtl) {
+      setIsRtl(true)
+    } 
+    if (language !== 'ar' && isRtl) {
+      setIsRtl(false)
+    }
+    i18n.changeLanguage(language)
+  }
+
   const onSubmit = (data) => {
     axiosAPI.get('/sanctum/csrf-cookie').then(() => {
       axiosAPI.post('/login', data).then((response) => {
         const userData = response.data
         dispatch(handleLogin(userData))
-        // initialLanguageDirection(response.data.language)
+        initialLanguageDirection(response.data.language)
         ability.update(userData.permissions?.map((item) => {
           const arr = item.name.split('@')
           return {action: arr[1], subject: arr[0]}
@@ -133,7 +145,7 @@ const LoginBasic = () => {
               <h2 className='brand-text text-primary ms-1'>Vuexy</h2>
             </Link>
             <CardTitle tag='h4' className='mb-1'>
-              Welcome to Vuexy! 👋
+              {t("Bienvenue sur la plateforme SAFIauto!")} 👋
             </CardTitle>
             <CardText className='mb-2'>{t("Connectez-vous à votre compte et commencez à explorer notre plateforme.")}</CardText>
             <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>

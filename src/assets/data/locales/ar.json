@@ -1,4 +1,15 @@
 {
   "Home" : "الصفحة الرئيسية",
-  "Connectez-vous à votre compte et commencez à explorer notre plateforme." : ""
+  "Connectez-vous à votre compte et commencez à explorer notre plateforme." : "",
+  "Bienvenue sur la plateforme SAFIauto!" : "مرحبا بكم على منصة صافي أوتو",
+  "Email" : "البريد الإليكتروني",
+  "Entrez votre email ici..." : "ادخل بريدك الإليكتروني هنا...",
+  "Mot de passe" : "كلمة المرور",
+  "Mot de passe oublié ?" : "هل نسيت كلمة المرور ؟",
+  "Me garder connecté" : "احفظ كلمة المرور",
+  "Se connecter" : "سجل الدخول",
+  "Nouveau sur notre plateforme ?" : "هل أنت جديد على منصتنا ؟",
+  "Créer un compte" : "افتح حساب",
+
+  "" : ""
 }

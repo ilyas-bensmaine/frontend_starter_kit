@@ -1,9 +1,11 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { getUserLanguage } from '../configs/i18n'
 
 export default function useAxiosAPI() {
     axios.defaults.withCredentials = true
     axios.defaults.baseURL = `http://admin.app.com:8000`
+    axios.defaults.params = { language: getUserLanguage() }
 
     const axiosAPI = axios.create({
         headers: {

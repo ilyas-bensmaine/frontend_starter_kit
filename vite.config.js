@@ -50,7 +50,9 @@ export default () => {
         { find: 'process', replacement: 'rollup-plugin-node-polyfills/polyfills/process-es6' },
         { find: '@components', replacement: path.resolve(__dirname, 'src/@core/components') },
         { find: '@api', replacement: path.resolve(__dirname, 'src/api') },
-        { find: '@utility', replacement: path.resolve(__dirname, 'src/utility') }
+        { find: '@configs', replacement: path.resolve(__dirname, 'src/configs') },
+        { find: '@utility', replacement: path.resolve(__dirname, 'src/utility') },
+        { find: '@myComponents', replacement: path.resolve(__dirname, 'src/components') }
       ]
     },
     esbuild: {

@@ -44,6 +44,14 @@ import "./@core/assets/fonts/feather/iconfont.css";
 import "./@core/scss/core.scss";
 import "./assets/scss/style.scss";
 
+// ** Time ago 
+import TimeAgo from 'javascript-time-ago'
+import ar from 'javascript-time-ago/locale/ar.json'
+import fr from 'javascript-time-ago/locale/fr.json'
+
+TimeAgo.addDefaultLocale(fr) 
+TimeAgo.addLocale(ar)
+
 // ** Service Worker
 import * as serviceWorker from "./serviceWorker";
 

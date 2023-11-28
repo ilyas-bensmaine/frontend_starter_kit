@@ -1,3 +1,4 @@
+import { getUserLanguage } from "../configs/i18n";
 import { DefaultRoute } from "../router/routes";
 
 // ** Checks if an object is empty (returns boolean)
@@ -83,3 +84,26 @@ export const selectThemeColors = (theme) => ({
     neutral30: "#ededed", // for input hover border-color
   },
 });
+
+export const mapSelectableData = (data) => {
+  return data?.map((item) => {
+    return {
+      value: item?.id,
+      label: getUserLanguage() === 'fr' ? item?.name : item?.arabic_name
+    }
+  })
+}
+export const mapMultiSelectableData = (data) => {
+  return data?.map((item) => {
+    mapSelectableData(item)
+  })
+}
+
+// ** GET THE CORRECT LABEL
+export const translateAttribute = (attribute, arabic_attribute) => {
+  if (getUserLanguage() === 'fr') {
+    return attribute ?? (arabic_attribute ?? '/')
+  } else {
+    return arabic_attribute ?? (attribute ?? '/')
+  }
+}

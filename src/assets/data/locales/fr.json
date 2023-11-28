@@ -1,3 +1,11 @@
 {
-  
+    "Error 400: Bad request (something worng with URL or parameters)." : "Erreur 400: Mauvaise requête (problème avec l'URL ou les paramètres).",
+    "Error 401: Unauthenticated, not logged in." : "Erreur 401: Non authentifié, vous n'êtes pas connecté.",
+    "Error 403: Unauthorized, access to requested page is forbidden." : "Erreur 403: Non autorisé, l'accès à la page demandée est interdit.",
+    "Error 404: Bad request (page not exist)." : "Erreur 404: Mauvaise requête (la page n'existe pas).",
+    "Error 419: Sorry, your session has expired." : "Erreur 419: Désolé, votre session a expiré.",
+    "Error 422: Validation failed." : "Erreur 422: La validation du formulaire a échoué.",
+    "Error 429: Too much requests, please try later." : "Erreur 429: Trop de demandes, veuillez réessayer plus tard",
+    "Error 477: Custom error (check the console)." : "Erreur 477:Erreur personnalisée (vérifiez la console)",
+    "Error 500: Server error." : "Erreur 500: Erreur de serveur."
 }

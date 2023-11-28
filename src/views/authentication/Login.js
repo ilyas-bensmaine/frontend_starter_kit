@@ -17,16 +17,17 @@ import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import SuccessToast from './SuccessToast'
 import { useTranslation } from 'react-i18next'
-import { error } from 'jquery'
 import { handleLogin } from './store'
 import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
 import { AbilityContext } from '../../utility/context/Can'
 import { useRTL } from '../../utility/hooks/useRTL'
+import { DevTool } from '@hookform/devtools'
 
 const defaultValues = {
   email: '',
-  password: ''
+  password: '',
+  remember: false
 }
 
 const LoginBasic = () => {
@@ -148,6 +149,7 @@ const LoginBasic = () => {
               {t("Bienvenue sur la plateforme SAFIauto!")} 👋
             </CardTitle>
             <CardText className='mb-2'>{t("Connectez-vous à votre compte et commencez à explorer notre plateforme.")}</CardText>
+            <DevTool control={control} placement="top-left" />
             <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
             <div className='mb-1'>
                 <Label className='form-label' for='email'>
@@ -189,8 +191,14 @@ const LoginBasic = () => {
                 {errors.password && <FormFeedback>{errors.password.message}</FormFeedback>}
               </div>
               <div className='form-check mb-1'>
-                <Input type='checkbox' id='remember-me' />
-                <Label className='form-check-label' for='remember-me'>
+                <Controller 
+                  name='remember'
+                  control={control}
+                  render={({ field }) => (
+                    <Input type='checkbox' id='remember' {...field}/>
+                  )}
+                />
+                <Label className='form-check-label' for='remember'>
                   {t("Me garder connecté")}
                 </Label>
               </div>

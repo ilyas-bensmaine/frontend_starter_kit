@@ -4,6 +4,19 @@ import Backend from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
+export const getUserLanguage = () => {
+  const userData = localStorage.getItem("userData")
+  return userData ? JSON.parse(localStorage.getItem("userData")).language : 'fr'
+} 
+// ** GET THE CORRECT LABEL
+export const translateAttribute = (attribute, arabic_attribute) => {
+  if (getUserLanguage() === 'fr') {
+    return attribute ?? (arabic_attribute ?? '/')
+  } else {
+    return arabic_attribute ?? (attribute ?? '/')
+  }
+}
+
 // ** Languages Imports
 const fr = new URL('../../assets/data/locales/fr.json', import.meta.url).href
 const ar = new URL('../../assets/data/locales/ar.json', import.meta.url).href
@@ -12,11 +25,6 @@ const languages = {
   fr,
   ar
 }
-
-export const getUserLanguage = () => {
-  const userData = localStorage.getItem("userData")
-  return userData ? JSON.parse(localStorage.getItem("userData")).language : 'fr'
-} 
 
 i18n
   // Enables the i18next backend

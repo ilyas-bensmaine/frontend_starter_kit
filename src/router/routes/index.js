@@ -15,6 +15,7 @@ import { isObjEmpty } from "@utils";
 import PageRoutes from "./PageRoutes";
 import AuthenticationRoutes from "./AuthenticationRoutes";
 import AppRoutes from "./AppRoutes";
+import UsersRoutes from "./Users";
 
 const getLayout = {
   blank: <BlankLayout />,
@@ -32,7 +33,8 @@ const DefaultRoute = "/home";
 const Routes = [
   ...PageRoutes,
   ...AuthenticationRoutes,
-  ...AppRoutes
+  ...AppRoutes,
+  ...UsersRoutes
 ];
 
 const getRouteMeta = route => {
